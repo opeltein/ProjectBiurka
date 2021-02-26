@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project2.Models;
+using ProjectBiurka2.Models;
 
 using System.ComponentModel;
 using System.Windows;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System;
 
-namespace Project2.Views
+namespace ProjectBiurka2.Views
 {
     /// <summary>
     /// Interaction logic for HomeView.xaml

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 
 
-namespace Project2.Models
+namespace ProjectBiurka2.Models
 {
     class MyContext : DbContext
     {

@@ -1,7 +1,7 @@
-﻿<Application x:Class="Project2.App"
+﻿<Application x:Class="ProjectBiurka2.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Project2"
+             xmlns:local="clr-namespace:ProjectBiurka2"
              StartupUri="Views/HomeView.xaml">
     <Application.Resources>
         <!--Kolory-->

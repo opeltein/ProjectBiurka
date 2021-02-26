@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Project2.Views
+namespace ProjectBiurka2.Views
 {
     /// <summary>
     /// Interaction logic for FindView.xaml

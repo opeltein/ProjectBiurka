@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project2.Models;
+using ProjectBiurka2.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Project2.Views
+namespace ProjectBiurka2.Views
 {
     /// <summary>
     /// Interaction logic for AddView.xaml
