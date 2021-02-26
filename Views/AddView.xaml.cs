@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Project2.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -34,6 +36,32 @@ namespace Project2.Views
             producenciViewSource.Source = dbContext.Producenci.Local.ToObservableCollection();
             pomieszczeniaViewSource.Source = dbContext.Pomieszczenia.Local.ToObservableCollection();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Pracownik pracownik = new Pracownik() { Imie = txtImie.Text, Nazwisko = txtNazwisko.Text };
+                dbContext.Pracownicy.AddRange(new Pracownik[] { pracownik });
 
+
+                dbContext.Biurka.AddRange(new Biurko[]
+                  {
+                        new Biurko(){Numer = Convert.ToInt32(txtNumer.Text),
+                            Pomieszczenie = (Pomieszczenie)cbPomieszczenie.SelectedItem,
+                            Producent = (Producent)cbProducent.SelectedItem,
+                            Pracownik = pracownik},
+
+                  });
+
+
+
+                dbContext.SaveChanges();
+                MessageBox.Show("Zapisano");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Numer biurka nie może się powtórzyć");
+            }
+        }
     }
 }

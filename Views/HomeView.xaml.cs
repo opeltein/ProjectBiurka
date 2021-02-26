@@ -88,17 +88,17 @@ namespace Project2.Views
                  dbContext.Biurka.Local.ToObservableCollection();
         }
 
-     
-
-      
-
-       
 
 
-    
 
- 
 
-       
+
+
+
+
+
+
+
+
     }
 }
