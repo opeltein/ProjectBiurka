@@ -13,11 +13,11 @@
     <Window.Resources>
         <CollectionViewSource x:Key="producenciViewSource"/>
         <CollectionViewSource x:Key="categoryProducenciViewSource" 
-                              Source=""/>
+                              Source="{Binding Producenci, Source={StaticResource producenciViewSource}}"/>
 
         <CollectionViewSource x:Key="pomieszczeniaViewSource"/>
         <CollectionViewSource x:Key="categoryPomieszczeniaViewSource" 
-                              Source=""/>
+                              Source="{Binding Pomieszczenia, Source={StaticResource pomieszczeniaViewSource}}"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,8 +41,8 @@
         <TextBox x:Name="txtImie" Margin="20,25,20,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNazwisko" Margin="20,25,20,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox x:Name="txtNumer" Margin="20,25,20,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2"/>
-        <ComboBox x:Name="cbPomieszczenie" Margin="20,25,20,0" Grid.Row="1"  VerticalAlignment="Top" Grid.Column="3" ItemsSource=""/>
-        <ComboBox x:Name="cbProducent" Margin="20,25,20,0" Grid.Row="1"  VerticalAlignment="Top" Grid.Column="4" ItemsSource=""/>
+        <ComboBox x:Name="cbPomieszczenie" Margin="20,25,20,0" Grid.Row="1"  VerticalAlignment="Top" Grid.Column="3" ItemsSource="{Binding Source={StaticResource pomieszczeniaViewSource}}" DisplayMemberPath="Nazwa"/>
+        <ComboBox x:Name="cbProducent" Margin="20,25,20,0" Grid.Row="1"  VerticalAlignment="Top" Grid.Column="4" ItemsSource="{Binding Source={StaticResource producenciViewSource}}" DisplayMemberPath="Nazwa"/>
 
         <Button Content="Dodaj" Grid.Column="2" Margin="0,0,25,9" Grid.Row="2" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="79" Click="Button_Click"/>
 
