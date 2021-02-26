@@ -13,13 +13,27 @@ using System.Windows.Shapes;
 namespace Project2.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddView.xaml
+    /// Interaction logic for AddView.xaml
     /// </summary>
     public partial class AddView : Window
     {
+        private readonly MyContext dbContext = new MyContext();
+        private CollectionViewSource producenciViewSource;
+        private CollectionViewSource pomieszczeniaViewSource;
+
         public AddView()
         {
             InitializeComponent();
+            producenciViewSource = (CollectionViewSource)FindResource(nameof(producenciViewSource));
+            pomieszczeniaViewSource = (CollectionViewSource)FindResource(nameof(pomieszczeniaViewSource));
+
+
+            dbContext.Producenci.Load();
+            dbContext.Pomieszczenia.Load();
+
+            producenciViewSource.Source = dbContext.Producenci.Local.ToObservableCollection();
+            pomieszczeniaViewSource.Source = dbContext.Pomieszczenia.Local.ToObservableCollection();
         }
+
     }
 }

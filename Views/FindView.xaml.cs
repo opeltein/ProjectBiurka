@@ -13,13 +13,18 @@ using System.Windows.Shapes;
 namespace Project2.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy FindView.xaml
+    /// Interaction logic for FindView.xaml
     /// </summary>
     public partial class FindView : Window
     {
         public FindView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
