@@ -88,17 +88,128 @@ namespace Project2.Views
                  dbContext.Biurka.Local.ToObservableCollection();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                dbContext.SaveChanges();
+                MessageBox.Show("Zapisano");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Numer biurka nie może się powtórzyć");
+            }
+        }
+
+        private void Button_Znajdz_Click(object sender, RoutedEventArgs e)
+        {
+            findView = new FindView();
+            findView.Closing += FindView_Closing;
+            findView.Show();
+        }
+
+        private void Button_Dodaj_Click(object sender, RoutedEventArgs e)
+        {
+            addView = new AddView();
+            //addView.Closing += FindView_Closing;
+            addView.Show();
+        }
 
 
+        private void Button_Wszystkie_Click(object sender, RoutedEventArgs e)
+        {
+            dbContext.Biurka.Load();
+            dbContext.Pracownicy.Load();
+            dbContext.Producenci.Load();
+            dbContext.Pomieszczenia.Load();
+
+            categoryViewSource.Source =
+                dbContext.Biurka.Local.ToObservableCollection();
+        }
+
+        private void FindView_Closing(object sender, CancelEventArgs e)
+        {
+            if ((findView.txtNumer.Text != "") && (findView.txtImie.Text != "") && (findView.txtNazwisko.Text != ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where b.Numer == Convert.ToInt32(findView.txtNumer.Text) &&
+                             b.Pracownik.Imie == findView.txtImie.Text &&
+                             b.Pracownik.Nazwisko == findView.txtNazwisko.Text
+                             select b;
 
 
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else if ((findView.txtNumer.Text == "") && (findView.txtImie.Text != "") && (findView.txtNazwisko.Text != ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where
+                             b.Pracownik.Imie == findView.txtImie.Text &&
+                             b.Pracownik.Nazwisko == findView.txtNazwisko.Text
+                             select b;
 
 
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else if ((findView.txtNumer.Text != "") && (findView.txtImie.Text == "") && (findView.txtNazwisko.Text != ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where b.Numer == Convert.ToInt32(findView.txtNumer.Text) &&
+                             b.Pracownik.Nazwisko == findView.txtNazwisko.Text
+                             select b;
 
 
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else if ((findView.txtNumer.Text != "") && (findView.txtImie.Text != "") && (findView.txtNazwisko.Text == ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where b.Numer == Convert.ToInt32(findView.txtNumer.Text) &&
+                             b.Pracownik.Imie == findView.txtImie.Text
+                             select b;
 
 
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else if ((findView.txtNumer.Text == "") && (findView.txtImie.Text == "") && (findView.txtNazwisko.Text != ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where
+                             b.Pracownik.Nazwisko == findView.txtNazwisko.Text
+                             select b;
 
 
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else if ((findView.txtNumer.Text == "") && (findView.txtImie.Text != "") && (findView.txtNazwisko.Text == ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where
+                             b.Pracownik.Imie == findView.txtImie.Text
+                             select b;
+
+
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else if ((findView.txtNumer.Text != "") && (findView.txtImie.Text == "") && (findView.txtNazwisko.Text == ""))
+            {
+                var biurko = from b in dbContext.Biurka
+                             where b.Numer == Convert.ToInt32(findView.txtNumer.Text)
+                             select b;
+
+
+                categoryViewSource.Source = biurko.ToList();
+            }
+            else
+            {
+                return;
+            }
+
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+        }
     }
 }
