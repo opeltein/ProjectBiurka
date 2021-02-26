@@ -10,7 +10,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="categoryViewSource"/>
         <CollectionViewSource x:Key="categoryProductsViewSource" 
-                             />
+                              Source="{Binding Biurka, Source={StaticResource categoryViewSource}}"/>
     </Window.Resources>
 
     <Grid>
@@ -20,11 +20,11 @@
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"  Text="Baza biurek - Tomasz Opalski " />
+        <TextBlock Grid.Row="0"  Text="Baza biurek" Background="{StaticResource PedzelPrim1}"/>
 
 
 
-        <DataGrid x:Name="dataGrid1"  Margin="28,45,248,22" CanUserAddRows="False"  Grid.Row="2" 
+        <DataGrid x:Name="dataGrid1"  Margin="28,45,248,22" CanUserAddRows="False"  Grid.Row="2" ItemsSource="{Binding Source={StaticResource categoryViewSource}}"
                   AutoGenerateColumns="False" 
                   EnableRowVirtualization="True"
                   RowDetailsVisibilityMode="VisibleWhenSelected">
@@ -32,15 +32,15 @@
             <!-- Kolumny i Binding -->
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Header="Lp." Binding="{Binding Path=Lp}" Width="50"/>-->
-                <DataGridTextColumn Width="150" />
-                <DataGridTextColumn  Width="150" />
-                <DataGridTextColumn  Width="150" />
+                <DataGridTextColumn Header="Imię" Binding="{Binding Path=Pracownik.Imie}" Width="150" />
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding Path=Pracownik.Nazwisko}" Width="150" />
+                <DataGridTextColumn Header="Numer biurka" Binding="{Binding Path=Numer}" Width="150" />
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Grid.Row="2" Margin="0,0,30,140"  Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
-        <Button Grid.Row="2" Margin="0,0,30,30"  Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
-        <Button Grid.Row="2" Margin="0,0,30,71"  Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
-        <Button Grid.Row="2" Margin="0,0,30,104" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
+        <Button Grid.Row="2" Margin="0,0,30,140" Content="Dodaj" Click="Button_Dodaj_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
+        <Button Grid.Row="2" Margin="0,0,30,30" Content="Zapisz" Click="Button_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
+        <Button Grid.Row="2" Margin="0,0,30,71" Content="Znajdź" Click="Button_Znajdz_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
+        <Button Grid.Row="2" Margin="0,0,30,104" Content="Wszystkie" Click="Button_Wszystkie_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
     </Grid>
 </Window>
