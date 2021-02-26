@@ -45,12 +45,53 @@ namespace Project2.Models
 
 
 
-
-
         }
     }
 
+    public class Biurko
+    {
+        [Key]
+        public int BiurkoId { get; set; }
+        [Required]
+        public int Numer { get; set; }
+        [Required]
+        public Producent Producent { get; set; }
+        [Required]
+        public Pomieszczenie Pomieszczenie { get; set; }
+        [Required]
+        public Pracownik Pracownik { get; set; }
+    }
 
- 
+
+    public class Pomieszczenie
+    {
+        [Key]
+        public int PomieszczenieId { get; set; }
+        [Required]
+        public string Nazwa { get; set; }
+
+
+    }
+
+    public class Producent
+    {
+        [Key]
+        public int ProducentId { get; set; }
+        [Required]
+        public string Nazwa { get; set; }
+
+    }
+
+
+    public class Pracownik
+    {
+        [Key]
+        public int PracownikId { get; set; }
+        [Required]
+        public string Imie { get; set; }
+        [Required]
+        public string Nazwisko { get; set; }
+
+    }
 }
 
