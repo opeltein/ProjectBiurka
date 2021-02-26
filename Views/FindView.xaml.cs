@@ -8,7 +8,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Project2.Views
@@ -16,7 +15,7 @@ namespace Project2.Views
     /// <summary>
     /// Logika interakcji dla klasy FindView.xaml
     /// </summary>
-    public partial class FindView : UserControl
+    public partial class FindView : Window
     {
         public FindView()
         {
